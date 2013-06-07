@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple.csproj", "{26FDAB93-26B8-418B-B57E-0E24C2E3B7A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple\Simple.csproj", "{26FDAB93-26B8-418B-B57E-0E24C2E3B7A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Console", "..\Simple.Console\Simple.Console.csproj", "{3944BD89-B6EC-4707-AEFA-CEC7ABBE387A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Console", "Simple.Console\Simple.Console.csproj", "{3944BD89-B6EC-4707-AEFA-CEC7ABBE387A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
