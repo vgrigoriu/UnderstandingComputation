@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System.Globalization;
+
+namespace Simple
 {
     public class Number : IExpression
     {
@@ -13,7 +15,7 @@
 
         public override string ToString()
         {
-            return Value.ToString();
+            return Value.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

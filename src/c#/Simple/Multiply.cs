@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System.Globalization;
+
+namespace Simple
 {
     public class Multiply : IExpression
     {
@@ -20,6 +22,15 @@
         {
             this.left = left;
             this.right = right;
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0} * {1}",
+                Left,
+                Right);
         }
     }
 }
