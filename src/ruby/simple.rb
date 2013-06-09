@@ -25,6 +25,16 @@ class Add < Struct.new(:left, :right)
         true
     end
 
+    def reduce
+        if left.reducible?
+            Add.new(left.reduce, right)
+        elsif right.reducible?
+            Add.new(left, right.reduce)
+        else
+            Number.new(left.value + right.value)
+        end
+    end
+
     def to_s
         "#{left} + #{right}"
     end
@@ -33,12 +43,33 @@ end
 class Multiply < Struct.new(:left, :right)
     include Expression
 
-    def reduciblr?
+    def reducible?
         true
+    end
+
+    def reduce
+        if left.reducible?
+            Multiply.new(left.reduce, right)
+        elsif right.reducible?
+            Multiply.new(left, right.reduce)
+        else
+            Number.new(left.value * right.value)
+        end
     end
 
     def to_s
         "#{left} * #{right}"
+    end
+end
+
+class Reducible < Struct.new(:reduced?, :reducible?)
+    # def init(reducible)
+    #     reducible? = reducible
+    #     reduced = false
+    # end
+
+    def reduce
+        Reducible.new(true, reducible?)
     end
 end
 
@@ -67,5 +98,31 @@ class TestExpressions < Test::Unit::TestCase
     def test_number_is_not_reducible
         number = Number.new(12321)
         assert_equal(false, number.reducible?)
-    end  
+    end
+
+    def test_multiply_is_reducible
+        multiply = Multiply.new(nil, nil)
+        assert_equal(true, multiply.reducible?)
+    end
+
+    def test_add_reduces_left_argument_if_reducible
+        add = Add.new(Reducible.new(false, true), Reducible.new(false, true))
+        reduced_add = add.reduce
+        assert_equal(true, reduced_add.left.reduced?)
+        assert_equal(false, reduced_add.right.reduced?)
+    end
+
+    def test_add_reduces_right_argument_if_reducible_and_left_one_not
+        add = Add.new(Reducible.new(false, false), Reducible.new(false, true))
+        reduced_add = add.reduce
+        assert_equal(false, reduced_add.left.reduced?)
+        assert_equal(true, reduced_add.right.reduced?)
+    end
+
+    def test_add_reduces_to_sum_of_values
+        add = Add.new(Number.new(123), Number.new(2))
+        assert_equal(125, add.reduce.value)
+    end
+
+    # todo: add test for Multiply.reduce
 end
