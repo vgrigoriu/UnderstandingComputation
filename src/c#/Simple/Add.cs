@@ -2,7 +2,7 @@
 
 namespace Simple
 {
-    public class Add:IExpression
+    public class Add : IExpression
     {
         private readonly IExpression left;
 
@@ -31,6 +31,11 @@ namespace Simple
                 "{0} + {1}",
                 Left,
                 Right);
+        }
+
+        public bool IsReducible
+        {
+            get { return true; }
         }
     }
 }

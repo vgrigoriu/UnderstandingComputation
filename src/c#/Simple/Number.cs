@@ -17,5 +17,10 @@ namespace Simple
         {
             return Value.ToString(CultureInfo.InvariantCulture);
         }
+
+        public bool IsReducible
+        {
+            get { return false; }
+        }
     }
 }

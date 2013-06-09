@@ -2,5 +2,6 @@
 {
     public interface IExpression
     {
+        bool IsReducible { get; }
     }
 }

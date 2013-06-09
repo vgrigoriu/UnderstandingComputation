@@ -32,5 +32,10 @@ namespace Simple
                 Left,
                 Right);
         }
+
+        public bool IsReducible
+        {
+            get { return true; }
+        }
     }
 }
