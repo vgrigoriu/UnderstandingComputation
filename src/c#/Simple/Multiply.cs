@@ -1,7 +1,10 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Simple
 {
+    // todo: extract common code in Add, Multiply
+    // todo: add tests for Multiply.Reduce
     public class Multiply : IExpression
     {
         private readonly IExpression left;
@@ -36,6 +39,21 @@ namespace Simple
         public bool IsReducible
         {
             get { return true; }
+        }
+
+        public IExpression Reduce()
+        {
+            if (left.IsReducible)
+                return new Multiply(left.Reduce(), right);
+            if (right.IsReducible)
+                return new Multiply(left, right.Reduce());
+
+            return new Number(left.Value * right.Value);
+        }
+
+        public int Value
+        {
+            get { throw new InvalidOperationException("Multiply needs to be reduces before the value can be obtained"); }
         }
     }
 }

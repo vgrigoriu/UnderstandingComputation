@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Simple
 {
@@ -36,6 +37,22 @@ namespace Simple
         public bool IsReducible
         {
             get { return true; }
+        }
+
+
+        public IExpression Reduce()
+        {
+            if (left.IsReducible)
+                return new Add(left.Reduce(), right);
+            if (right.IsReducible)
+                return new Add(left, right.Reduce());
+
+            return new Number(left.Value + right.Value);
+        }
+
+        public int Value
+        {
+            get { throw new InvalidOperationException("Add needs to be reduces before the value can be obtained"); }
         }
     }
 }

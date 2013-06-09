@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace Simple
 {
@@ -21,6 +22,11 @@ namespace Simple
         public bool IsReducible
         {
             get { return false; }
+        }
+
+        public IExpression Reduce()
+        {
+            throw new InvalidOperationException("Numbers can't be reduced");
         }
     }
 }
