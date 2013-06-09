@@ -9,6 +9,10 @@ end
 class Number < Struct.new(:value)
     include Expression
 
+    def reducible?
+        false
+    end
+
     def to_s
         value.to_s
     end
@@ -17,6 +21,10 @@ end
 class Add < Struct.new(:left, :right)
     include Expression
 
+    def reducible?
+        true
+    end
+
     def to_s
         "#{left} + #{right}"
     end
@@ -24,6 +32,10 @@ end
 
 class Multiply < Struct.new(:left, :right)
     include Expression
+
+    def reduciblr?
+        true
+    end
 
     def to_s
         "#{left} * #{right}"
@@ -50,5 +62,10 @@ class TestExpressions < Test::Unit::TestCase
             Multiply.new(Number.new(1), Number.new(2)),
             Multiply.new(Number.new(3), Number.new(4)))
         assert_equal('«1 * 2 + 3 * 4»', expression.inspect)
+    end
+
+    def test_number_is_not_reducible
+        number = Number.new(12321)
+        assert_equal(false, number.reducible?)
     end  
 end
