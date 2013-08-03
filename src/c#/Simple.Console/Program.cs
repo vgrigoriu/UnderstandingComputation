@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             var environment = new Environment();
-            environment.SetVariable("x", 3);
-            environment.SetVariable("y", 4);
+            environment.SetVariable("x", new Number(3));
+            environment.SetVariable("y", new Number(4));
 
             var expression = new LessThan(
                 new Multiply(new Number(1), new Number(2)),

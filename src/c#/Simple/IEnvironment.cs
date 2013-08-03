@@ -4,21 +4,21 @@ namespace Simple
 {
     public interface IEnvironment
     {
-        T GetValue<T>(string variableName);
+        IExpression<T> GetValue<T>(string variableName);
     }
 
     public class Environment : IEnvironment
     {
         private readonly Dictionary<string, object> values = new Dictionary<string, object>();
 
-        public void SetVariable<T>(string variableName, T value)
+        public void SetVariable<T>(string variableName, IExpression<T> value)
         {
             values[variableName] = value;
         }
 
-        public T GetValue<T>(string variableName)
+        public IExpression<T> GetValue<T>(string variableName)
         {
-            return (T) values[variableName];
+            return (IExpression<T>) values[variableName];
         }
     }
 }
