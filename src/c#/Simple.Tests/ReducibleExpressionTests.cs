@@ -59,7 +59,7 @@ namespace Simple.Tests
             reducedAdd.Value.Should().Be(82);
         }
 
-        private class Reducible : IExpression
+        private class Reducible : IExpression<int>
         {
             private bool isReducible;
             private bool isReduced;
@@ -80,7 +80,7 @@ namespace Simple.Tests
                 get { return isReducible; }
             }
 
-            public IExpression Reduce()
+            public IExpression<int> Reduce()
             {
                 return new Reducible(this.isReducible, true);
             }

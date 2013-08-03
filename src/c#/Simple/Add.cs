@@ -3,23 +3,23 @@ using System.Globalization;
 
 namespace Simple
 {
-    public class Add : IExpression
+    public class Add : IExpression<int>
     {
-        private readonly IExpression left;
+        private readonly IExpression<int> left;
 
-        private readonly IExpression right;
+        private readonly IExpression<int> right;
 
-        public IExpression Left
+        public IExpression<int> Left
         {
             get { return left; }
         }
 
-        public IExpression Right
+        public IExpression<int> Right
         {
             get { return right; }
         }
 
-        public Add(IExpression left, IExpression right)
+        public Add(IExpression<int> left, IExpression<int> right)
         {
             this.left = left;
             this.right = right;
@@ -40,7 +40,7 @@ namespace Simple
         }
 
 
-        public IExpression Reduce()
+        public IExpression<int> Reduce()
         {
             if (left.IsReducible)
                 return new Add(left.Reduce(), right);

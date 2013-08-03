@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Simple
 {
-    public class Number : IExpression
+    public class Number : IExpression<int>
     {
         private readonly int value;
 
@@ -24,7 +24,7 @@ namespace Simple
             get { return false; }
         }
 
-        public IExpression Reduce()
+        public IExpression<int> Reduce()
         {
             throw new InvalidOperationException("Numbers can't be reduced");
         }

@@ -2,16 +2,16 @@ using System;
 
 namespace Simple
 {
-	public class Machine
+	public class Machine<T>
 	{
-		private IExpression expression;
+		private IExpression<T> expression;
 
-		public IExpression Expression
+		public IExpression<T> Expression
 		{
 			get { return expression; }
 		}
 
-		public Machine(IExpression expression)
+		public Machine(IExpression<T> expression)
 		{
 			this.expression = expression;
 		}

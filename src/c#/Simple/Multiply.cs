@@ -5,23 +5,23 @@ namespace Simple
 {
     // todo: extract common code in Add, Multiply
     // todo: add tests for Multiply.Reduce
-    public class Multiply : IExpression
+    public class Multiply : IExpression<int>
     {
-        private readonly IExpression left;
+        private readonly IExpression<int> left;
 
-        private readonly IExpression right;
+        private readonly IExpression<int> right;
 
-        public IExpression Left
+        public IExpression<int> Left
         {
             get { return left; }
         }
 
-        public IExpression Right
+        public IExpression<int> Right
         {
             get { return right; }
         }
 
-        public Multiply(IExpression left, IExpression right)
+        public Multiply(IExpression<int> left, IExpression<int> right)
         {
             this.left = left;
             this.right = right;
@@ -41,7 +41,7 @@ namespace Simple
             get { return true; }
         }
 
-        public IExpression Reduce()
+        public IExpression<int> Reduce()
         {
             if (left.IsReducible)
                 return new Multiply(left.Reduce(), right);
