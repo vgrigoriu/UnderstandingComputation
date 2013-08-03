@@ -73,6 +73,28 @@ class Reducible < Struct.new(:reduced?, :reducible?)
     end
 end
 
+class Machine < Struct.new(:expression)
+    def step
+        self.expression = expression.reduce
+    end
+
+    def run
+        while expression.reducible?
+            puts expression
+            step
+        end
+
+        puts expression
+    end
+end
+
+Machine.new(
+    Add.new(
+        Multiply.new(Number.new(1), Number.new(2)),
+        Multiply.new(Number.new(3), Number.new(4))
+    )
+).run
+
 class TestExpressions < Test::Unit::TestCase
     def test_inspect_number
         assert_equal('«14»', Number.new(14).inspect)
