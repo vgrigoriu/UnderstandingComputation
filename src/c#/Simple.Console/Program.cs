@@ -8,7 +8,9 @@
                 new Multiply(new Number(1), new Number(2)),
                 new Multiply(new Number(3), new Number(4)));
 
-            System.Console.WriteLine(e);
+			var machine = new Machine(e);
+
+			machine.Run();
         }
     }
 }
