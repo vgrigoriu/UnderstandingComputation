@@ -44,6 +44,7 @@
     <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="IExpression.cs" />
     <Compile Include="LessThan.cs" />
+    <Compile Include="Machine{T}.cs" />
     <Compile Include="Multiply.cs" />
     <Compile Include="Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
