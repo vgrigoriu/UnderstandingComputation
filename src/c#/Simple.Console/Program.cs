@@ -8,9 +8,9 @@
             environment.SetVariable("x", new Number(3));
             environment.SetVariable("y", new Number(4));
 
-            var expression = new LessThan(
-                new Multiply(new Number(1), new Number(2)),
-                new Multiply(new Number(3), new Number(4)));
+            var expression = new Add(
+                new Variable<int>("x"), 
+                new Variable<int>("y"));
 
 			var machine = Machine.ForExpression(expression, environment);
 
