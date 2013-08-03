@@ -6,6 +6,8 @@ namespace Simple.Tests
 {
     public class ReducibleExpressionTests
     {
+        private const IEnvironment NullEnvironment = null;
+
         [Fact]
         public void GivenANumber_ThenItIsNotReducible()
         {
@@ -19,7 +21,7 @@ namespace Simple.Tests
         {
             var number = new Number(112);
 
-            Action action = () => number.Reduce();
+            Action action = () => number.Reduce(NullEnvironment);
             action.ShouldThrow<InvalidOperationException>();
         }
 
@@ -27,7 +29,7 @@ namespace Simple.Tests
         public void GivenAnAdd_WhenLeftIsReducible_ThenReduceReducesLeft()
         {
             var add = new Add(new Reducible(true, false), new Reducible(true, false));
-            var reducedAdd = add.Reduce() as Add;
+            var reducedAdd = add.Reduce(NullEnvironment) as Add;
 
             var left = reducedAdd.Left as Reducible;
             var right = reducedAdd.Right as Reducible;
@@ -40,7 +42,7 @@ namespace Simple.Tests
         public void GivenAnAdd_WhenLeftIsNotReducible_ThenReduceReducesRight()
         {
             var add = new Add(new Reducible(false, false), new Reducible(true, false));
-            var reducedAdd = add.Reduce() as Add;
+            var reducedAdd = add.Reduce(NullEnvironment) as Add;
 
             var left = reducedAdd.Left as Reducible;
             var right = reducedAdd.Right as Reducible;
@@ -54,15 +56,15 @@ namespace Simple.Tests
         {
             var add = new Add(new Number(77), new Number(5));
 
-            var reducedAdd = add.Reduce();
+            var reducedAdd = add.Reduce(NullEnvironment);
 
             reducedAdd.Value.Should().Be(82);
         }
 
         private class Reducible : IExpression<int>
         {
-            private bool isReducible;
-            private bool isReduced;
+            private readonly bool isReducible;
+            private readonly bool isReduced;
 
             public Reducible(bool isReducible, bool isReduced)
             {
@@ -80,7 +82,7 @@ namespace Simple.Tests
                 get { return isReducible; }
             }
 
-            public IExpression<int> Reduce()
+            public IExpression<int> Reduce(IEnvironment environment)
             {
                 return new Reducible(this.isReducible, true);
             }

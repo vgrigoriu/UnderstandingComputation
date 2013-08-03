@@ -41,12 +41,12 @@ namespace Simple
             get { return true; }
         }
 
-        public IExpression<int> Reduce()
+        public IExpression<int> Reduce(IEnvironment environment)
         {
             if (left.IsReducible)
-                return new Multiply(left.Reduce(), right);
+                return new Multiply(left.Reduce(environment), right);
             if (right.IsReducible)
-                return new Multiply(left, right.Reduce());
+                return new Multiply(left, right.Reduce(environment));
 
             return new Number(left.Value * right.Value);
         }

@@ -16,7 +16,7 @@ namespace Simple
             this.value = value;
         }
 
-        public IExpression<bool> Reduce()
+        public IExpression<bool> Reduce(IEnvironment environment)
         {
             throw new InvalidOperationException("Boolean values can't be reduced");
         }

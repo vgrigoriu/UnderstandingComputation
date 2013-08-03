@@ -5,15 +5,17 @@ namespace Simple
     public class Machine<T>
     {
         private IExpression<T> expression;
+        private readonly IEnvironment environment;
 
         public IExpression<T> Expression
         {
             get { return expression; }
         }
 
-        internal Machine(IExpression<T> expression)
+        internal Machine(IExpression<T> expression, IEnvironment environment)
         {
             this.expression = expression;
+            this.environment = environment;
         }
 
         public void Run()
@@ -29,7 +31,7 @@ namespace Simple
 
         private void Step()
         {
-            expression = expression.Reduce();
+            expression = expression.Reduce(environment);
         }
     }
 }

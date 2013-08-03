@@ -24,7 +24,7 @@ namespace Simple
             get { return false; }
         }
 
-        public IExpression<int> Reduce()
+        public IExpression<int> Reduce(IEnvironment environment)
         {
             throw new InvalidOperationException("Numbers can't be reduced");
         }

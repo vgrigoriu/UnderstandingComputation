@@ -1,9 +1,9 @@
 ﻿namespace Simple
 {
-    public interface IExpression<T>
+    public interface IExpression<out T>
     {
         T Value { get; }
         bool IsReducible { get; }
-        IExpression<T> Reduce();
+        IExpression<T> Reduce(IEnvironment environment);
     }
 }

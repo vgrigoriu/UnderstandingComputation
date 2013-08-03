@@ -40,12 +40,12 @@ namespace Simple
         }
 
 
-        public IExpression<int> Reduce()
+        public IExpression<int> Reduce(IEnvironment environment)
         {
             if (left.IsReducible)
-                return new Add(left.Reduce(), right);
+                return new Add(left.Reduce(environment), right);
             if (right.IsReducible)
-                return new Add(left, right.Reduce());
+                return new Add(left, right.Reduce(environment));
 
             return new Number(left.Value + right.Value);
         }

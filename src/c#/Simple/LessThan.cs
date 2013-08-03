@@ -24,16 +24,16 @@ namespace Simple
             this.right = right;
         }
 
-        public IExpression<bool> Reduce()
+        public IExpression<bool> Reduce(IEnvironment environment)
         {
             if (left.IsReducible)
             {
-                return new LessThan(left.Reduce(), right);
+                return new LessThan(left.Reduce(environment), right);
             }
 
             if (right.IsReducible)
             {
-                return new LessThan(left, right.Reduce());
+                return new LessThan(left, right.Reduce(environment));
             }
 
             return new Boolean(left.Value < right.Value);
