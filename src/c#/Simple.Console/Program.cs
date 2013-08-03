@@ -4,11 +4,11 @@
     {
         static void Main(string[] args)
         {
-            var e = new Add(
+            var e = new LessThan(
                 new Multiply(new Number(1), new Number(2)),
                 new Multiply(new Number(3), new Number(4)));
 
-			var machine = new Machine<int>(e);
+			var machine = new Machine<bool>(e);
 
 			machine.Run();
         }

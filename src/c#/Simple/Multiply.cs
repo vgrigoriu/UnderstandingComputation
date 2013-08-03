@@ -53,7 +53,7 @@ namespace Simple
 
         public int Value
         {
-            get { throw new InvalidOperationException("Multiply needs to be reduces before the value can be obtained"); }
+            get { throw new InvalidOperationException("Multiply needs to be reduced before the value can be obtained"); }
         }
     }
 }

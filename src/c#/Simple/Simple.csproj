@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Add.cs" />
+    <Compile Include="Boolean.cs" />
     <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="IExpression.cs" />
+    <Compile Include="LessThan.cs" />
     <Compile Include="Multiply.cs" />
     <Compile Include="Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
