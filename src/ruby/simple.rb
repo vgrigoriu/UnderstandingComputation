@@ -88,11 +88,46 @@ class Machine < Struct.new(:expression)
     end
 end
 
+class Boolean < Struct.new(:value)
+    def to_s
+        value.to_s
+    end
+
+    def inspect
+        "«#{self}»"
+    end
+
+    def reducible?
+        false
+    end
+end
+
+class LessThen < Struct.new(:left, :right)
+    def to_s
+        "#{left} < #{right}"
+    end
+
+    def inspect
+        "«#{self}»"
+    end
+
+    def reducible?
+        true
+    end
+
+    def reduce
+        if left.reducible?
+            LessThen.new(left.reduce, right)
+        elsif right.reducible?
+            LessThen.new(left, right.reduce)
+        else
+            Boolean.new(left.value < right.value)
+        end
+    end
+end
+
 Machine.new(
-    Add.new(
-        Multiply.new(Number.new(1), Number.new(2)),
-        Multiply.new(Number.new(3), Number.new(4))
-    )
+    LessThen.new(Number.new(5), Add.new(Number.new(2), Number.new(2)))
 ).run
 
 class TestExpressions < Test::Unit::TestCase
