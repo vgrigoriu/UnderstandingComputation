@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using Simple.Statements;
+
+namespace Simple
 {
     public class State
     {

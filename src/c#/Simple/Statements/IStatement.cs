@@ -1,4 +1,4 @@
-﻿namespace Simple
+﻿namespace Simple.Statements
 {
     public interface IStatement : IReducible
     {
