@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using System;
+using Simple.Expressions;
 using Xunit;
 
 namespace Simple.Tests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Simple
+namespace Simple.Expressions
 {
     public class Boolean : IExpression<bool>
     {

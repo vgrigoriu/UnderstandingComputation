@@ -4,9 +4,4 @@
     {
         bool IsReducible { get; }
     }
-
-    public interface IStatement : IReducible
-    {
-        State Reduce(IEnvironment environment);
-    }
 }

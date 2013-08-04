@@ -1,4 +1,6 @@
-﻿namespace Simple.Console
+﻿using Simple.Expressions;
+
+namespace Simple.Console
 {
     class Program
     {

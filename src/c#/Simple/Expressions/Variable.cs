@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simple
+namespace Simple.Expressions
 {
     public class Variable<T> : IExpression<T>
     {

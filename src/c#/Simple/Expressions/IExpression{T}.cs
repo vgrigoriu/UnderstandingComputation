@@ -1,4 +1,4 @@
-﻿namespace Simple
+﻿namespace Simple.Expressions
 {
     public interface IExpression<out T> : IReducible
     {

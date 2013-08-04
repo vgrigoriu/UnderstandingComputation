@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Simple
+namespace Simple.Expressions
 {
-    public class Add : IExpression<int>
+    // todo: extract common code in Add, Multiply
+    // todo: add tests for Multiply.Reduce
+    public class Multiply : IExpression<int>
     {
         private readonly IExpression<int> left;
 
@@ -19,7 +21,7 @@ namespace Simple
             get { return right; }
         }
 
-        public Add(IExpression<int> left, IExpression<int> right)
+        public Multiply(IExpression<int> left, IExpression<int> right)
         {
             this.left = left;
             this.right = right;
@@ -29,7 +31,7 @@ namespace Simple
         {
             return string.Format(
                 CultureInfo.InvariantCulture,
-                "{0} + {1}",
+                "{0} * {1}",
                 Left,
                 Right);
         }
@@ -39,20 +41,19 @@ namespace Simple
             get { return true; }
         }
 
-
         public IExpression<int> Reduce(IEnvironment environment)
         {
             if (left.IsReducible)
-                return new Add(left.Reduce(environment), right);
+                return new Multiply(left.Reduce(environment), right);
             if (right.IsReducible)
-                return new Add(left, right.Reduce(environment));
+                return new Multiply(left, right.Reduce(environment));
 
-            return new Number(left.Value + right.Value);
+            return new Number(left.Value * right.Value);
         }
 
         public int Value
         {
-            get { throw new InvalidOperationException("Add needs to be reduces before the value can be obtained"); }
+            get { throw new InvalidOperationException("Multiply needs to be reduced before the value can be obtained"); }
         }
     }
 }

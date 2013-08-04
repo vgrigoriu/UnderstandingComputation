@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Simple
+namespace Simple.Expressions
 {
     public static class ExpressionExtensions
     {
