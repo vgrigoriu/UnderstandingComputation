@@ -9,9 +9,9 @@ namespace Simple.Tests
         [Fact]
         public void GivenAnEnvironment_WhenAnExpressionWithVariablesIsReduces_TheCorrectValueIsReturned()
         {
-            var environment = new Environment();
-            environment.SetVariable("x", new Number(3));
-            environment.SetVariable("y", new Number(4));
+            var environment = Environment.Empty;
+            environment = environment.AddValue("x", new Number(3));
+            environment = environment.AddValue("y", new Number(4));
 
             var expression = new Add(
                 new Variable<int>("x"),

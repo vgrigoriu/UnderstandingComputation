@@ -9,9 +9,9 @@ namespace Simple.Tests
         [Fact]
         public void GivenAReducibleExpression_WhenRunIsCalled_TheExpressionIsReduced()
         {
-            var environment = new Environment();
-            environment.SetVariable("x", new Number(3));
-            environment.SetVariable("y", new Number(4));
+            var environment = Environment.Empty;
+            environment = environment.AddValue("x", new Number(3));
+            environment = environment.AddValue("y", new Number(4));
 
             var expression = new Add(
                 new Multiply(new Number(1), new Number(2)),
