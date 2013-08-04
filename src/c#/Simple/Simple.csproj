@@ -48,7 +48,7 @@
     <Compile Include="Expressions\IExpression{T}.cs" />
     <Compile Include="IReducible.cs" />
     <Compile Include="Expressions\LessThan.cs" />
-    <Compile Include="IStatement.cs" />
+    <Compile Include="Statements\IStatement.cs" />
     <Compile Include="Machine{T}.cs" />
     <Compile Include="Expressions\Multiply.cs" />
     <Compile Include="Expressions\Number.cs" />
