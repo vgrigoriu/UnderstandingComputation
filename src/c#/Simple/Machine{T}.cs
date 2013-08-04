@@ -6,23 +6,19 @@ namespace Simple
 {
     public class Machine
     {
-        private IStatement statement;
-        private IEnvironment environment;
+        public IStatement Statement { get; private set; }
 
-        public IStatement Statement
-        {
-            get { return statement; }
-        }
+        public IEnvironment Environment { get; private set; }
 
         public Machine(IStatement statement, IEnvironment environment)
         {
-            this.statement = statement;
-            this.environment = environment;
+            Statement = statement;
+            Environment = environment;
         }
 
         public void Run()
         {
-            while (statement.IsReducible)
+            while (Statement.IsReducible)
             {
                 Console.WriteLine(this);
                 Step();
@@ -33,9 +29,9 @@ namespace Simple
 
         private void Step()
         {
-            var state = statement.Reduce(environment);
-            statement = state.Program;
-            environment = state.Environment;
+            var state = Statement.Reduce(Environment);
+            Statement = state.Program;
+            Environment = state.Environment;
         }
 
         public override string ToString()
@@ -43,8 +39,8 @@ namespace Simple
             return string.Format(
                 CultureInfo.InvariantCulture,
                 "{0}, {1}",
-                statement,
-                environment);
+                Statement,
+                Environment);
         }
     }
 }
