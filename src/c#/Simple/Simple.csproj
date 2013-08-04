@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Expressions\Add.cs" />
     <Compile Include="Expressions\Boolean.cs" />
-    <Compile Include="Expressions\ExpressionExtensions.cs" />
+    <Compile Include="InspectExtensions.cs" />
     <Compile Include="IEnvironment.cs" />
     <Compile Include="Expressions\IExpression{T}.cs" />
     <Compile Include="IReducible.cs" />

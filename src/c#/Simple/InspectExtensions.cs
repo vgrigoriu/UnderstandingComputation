@@ -1,19 +1,19 @@
 ﻿using System.Globalization;
 
-namespace Simple.Expressions
+namespace Simple
 {
-    public static class ExpressionExtensions
+    public static class InspectExtensions
     {
         /// <summary>
         /// returns a string representation of the expression.
         /// </summary>
-        /// <param name="expression">The expression to inspect.</param>
-		public static string Inspect<T>(this IExpression<T> expression)
+        /// <param name="element">The expression to inspect.</param>
+		public static string Inspect(this IReducible element)
         {
             return string.Format(
                 CultureInfo.InvariantCulture,
                 "«{0}»",
-                expression);
+                element);
         }
     }
 }
