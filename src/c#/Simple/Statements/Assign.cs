@@ -16,6 +16,11 @@ namespace Simple.Statements
             get { return true; }
         }
 
+        public IExpression<T> Expression
+        {
+            get { return expression; }
+        }
+
         public Assign(Variable<T> variable, IExpression<T> expression)
         {
             this.variable = variable;
@@ -24,14 +29,14 @@ namespace Simple.Statements
 
         public State Reduce(IEnvironment environment)
         {
-            if (expression.IsReducible)
+            if (Expression.IsReducible)
                 return new State(
-                    new Assign<T>(variable, expression.Reduce(environment)),
+                    new Assign<T>(variable, Expression.Reduce(environment)),
                     environment);
 
             return new State(
                 new DoNothing(),
-                environment.AddValue(variable.Name, expression));
+                environment.AddValue(variable.Name, Expression));
         }
     }
 }
