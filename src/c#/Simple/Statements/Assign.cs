@@ -1,3 +1,4 @@
+using System.Globalization;
 using Simple.Expressions;
 
 namespace Simple.Statements
@@ -37,6 +38,15 @@ namespace Simple.Statements
             return new State(
                 new DoNothing(),
                 environment.AddValue(variable.Name, Expression));
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0} = {1}",
+                variable,
+                expression);
         }
     }
 }

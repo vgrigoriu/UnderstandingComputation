@@ -1,38 +1,50 @@
 using System;
-using Simple.Expressions;
+using System.Globalization;
+using Simple.Statements;
 
 namespace Simple
 {
-    public class Machine<T>
+    public class Machine
     {
-        private IExpression<T> expression;
-        private readonly IEnvironment environment;
+        private IStatement statement;
+        private IEnvironment environment;
 
-        public IExpression<T> Expression
+        public IStatement Statement
         {
-            get { return expression; }
+            get { return statement; }
         }
 
-        internal Machine(IExpression<T> expression, IEnvironment environment)
+        public Machine(IStatement statement, IEnvironment environment)
         {
-            this.expression = expression;
+            this.statement = statement;
             this.environment = environment;
         }
 
         public void Run()
         {
-            while (expression.IsReducible)
+            while (statement.IsReducible)
             {
-                Console.WriteLine(expression);
+                Console.WriteLine(this);
                 Step();
             }
 
-            Console.WriteLine(expression);
+            Console.WriteLine(this);
         }
 
         private void Step()
         {
-            expression = expression.Reduce(environment);
+            var state = statement.Reduce(environment);
+            statement = state.Program;
+            environment = state.Environment;
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0}, {1}",
+                statement,
+                environment);
         }
     }
 }

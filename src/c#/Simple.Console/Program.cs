@@ -1,4 +1,5 @@
 ﻿using Simple.Expressions;
+using Simple.Statements;
 
 namespace Simple.Console
 {
@@ -10,11 +11,13 @@ namespace Simple.Console
             environment = environment.AddValue("x", new Number(3));
             environment = environment.AddValue("y", new Number(4));
 
-            var expression = new Add(
+            var statement = new Assign<int>(
                 new Variable<int>("x"), 
-                new Variable<int>("y"));
+                new Add(
+                    new Variable<int>("x"),
+                    new Variable<int>("y")));
 
-			var machine = Machine.ForExpression(expression, environment);
+			var machine = new Machine(statement, environment);
 
 			machine.Run();
         }
