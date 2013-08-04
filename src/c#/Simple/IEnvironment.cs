@@ -6,6 +6,7 @@ namespace Simple
     public interface IEnvironment
     {
         IExpression<T> GetValue<T>(string variableName);
+        IEnvironment AddValue<T>(string variableName, IExpression<T> value);
     }
 
     public class Environment : IEnvironment
@@ -20,6 +21,11 @@ namespace Simple
         public IExpression<T> GetValue<T>(string variableName)
         {
             return (IExpression<T>) values[variableName];
+        }
+
+        public IEnvironment AddValue<T>(string variableName, IExpression<T> value)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

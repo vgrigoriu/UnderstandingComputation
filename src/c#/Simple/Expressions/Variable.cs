@@ -21,14 +21,19 @@ namespace Simple.Expressions
             get { return true; }
         }
 
+        public string Name
+        {
+            get { return name; }
+        }
+
         public IExpression<T> Reduce(IEnvironment environment)
         {
-            return environment.GetValue<T>(name);
+            return environment.GetValue<T>(Name);
         }
 
         public override string ToString()
         {
-            return name;
+            return Name;
         }
     }
 }
