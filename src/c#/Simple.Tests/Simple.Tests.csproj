@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AssignmentTests.cs" />
     <Compile Include="ExpressionInspectTests.cs" />
+    <Compile Include="IfTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReducibleExpressionTests.cs" />
     <Compile Include="MachineTests.cs" />

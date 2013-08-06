@@ -54,8 +54,9 @@
     <Compile Include="Expressions\LessThan.cs" />
     <Compile Include="Statements\Assign.cs" />
     <Compile Include="Statements\DoNothing.cs" />
+    <Compile Include="Statements\If.cs" />
     <Compile Include="Statements\IStatement.cs" />
-    <Compile Include="Machine{T}.cs" />
+    <Compile Include="Machine.cs" />
     <Compile Include="Expressions\Multiply.cs" />
     <Compile Include="Expressions\Number.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
