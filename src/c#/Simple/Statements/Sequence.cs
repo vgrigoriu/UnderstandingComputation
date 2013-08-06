@@ -1,4 +1,6 @@
-﻿namespace Simple.Statements
+﻿using System.Globalization;
+
+namespace Simple.Statements
 {
     public class Sequence : IStatement
     {
@@ -27,6 +29,11 @@
             }
 
             return new State(second, environment);
+        }
+
+        public override string ToString()
+        {
+            return string.Format(CultureInfo.InvariantCulture, "{0}; {1}", first, second);
         }
     }
 }

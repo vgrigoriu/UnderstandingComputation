@@ -1,4 +1,5 @@
-﻿using Simple.Expressions;
+﻿using System.Globalization;
+using Simple.Expressions;
 
 namespace Simple.Statements
 {
@@ -35,6 +36,16 @@ namespace Simple.Statements
             }
 
             return new State(alternative, environment);
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "if ({0}) then {{ {1} }} else {{ {2} }}",
+                condition,
+                consequence,
+                alternative);
         }
     }
 }
