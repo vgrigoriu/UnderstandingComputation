@@ -63,6 +63,7 @@
     <Compile Include="State.cs" />
     <Compile Include="Expressions\Variable.cs" />
     <Compile Include="Statements\Sequence.cs" />
+    <Compile Include="Statements\While.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
