@@ -14,7 +14,7 @@ namespace Simple.Tests
         [Test]
         public void NumberEvaluatesToSelf()
         {
-            var sut = new Number(3);
+            var sut = new Number();
             var result = sut.Evaluate(null);
 
             Assert.That(result, Is.SameAs(sut));

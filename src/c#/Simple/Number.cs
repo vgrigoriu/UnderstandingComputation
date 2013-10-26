@@ -11,10 +11,5 @@
         {
             return this;
         }
-
-        public Number(int value)
-        {
-
-        }
     }
 }
