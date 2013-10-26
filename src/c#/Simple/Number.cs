@@ -2,14 +2,21 @@
 {
     public class Number: IExpression<int>
     {
+        private readonly int value;
+
         public int Value
         {
-            get { throw new System.NotImplementedException(); }
+            get { return value; }
         }
 
         public IExpression<int> Evaluate(IEnvironment environment)
         {
             return this;
+        }
+
+        public Number(int value)
+        {
+            this.value = value;
         }
     }
 }
