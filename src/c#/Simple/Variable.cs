@@ -11,7 +11,7 @@
 
         public IExpression<T> Evaluate(IEnvironment environment)
         {
-            return new PrimitiveExpression<T>((T)environment[name]);
+            return (IExpression<T>)environment[name];
         }
 
         public Variable(string name)

@@ -11,14 +11,14 @@ namespace Simple.Tests
         {
             var enviroment = new Mock<IEnvironment>();
             var variableName = "count";
-            var variableValue = 7;
-            enviroment.SetupGet(env => env[variableName]).Returns(variableValue);
+            var number = new Number(6);
+            enviroment.SetupGet(env => env[variableName]).Returns(number);
 
             var sut = new Variable<int>(variableName);
 
             var result = sut.Evaluate(enviroment.Object);
 
-            Assert.That(result.Value, Is.EqualTo(variableValue));
+            Assert.That(result, Is.SameAs(number));
         }
     }
 }
