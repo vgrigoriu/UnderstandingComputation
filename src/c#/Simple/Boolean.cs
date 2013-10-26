@@ -1,22 +1,9 @@
 ﻿namespace Simple
 {
-    public class Boolean: IExpression<bool>
+    public class Boolean: PrimitiveExpression<bool>
     {
-        private readonly bool value;
-
-        public bool Value
+        public Boolean(bool value): base(value)
         {
-            get { return value; }
-        }
-
-        public IExpression<bool> Evaluate(IEnvironment environment)
-        {
-            return this;
-        }
-
-        public Boolean(bool value)
-        {
-            this.value = value;
         }
     }
 }

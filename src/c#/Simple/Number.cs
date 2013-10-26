@@ -1,22 +1,9 @@
 ﻿namespace Simple
 {
-    public class Number: IExpression<int>
+    public class Number: PrimitiveExpression<int>
     {
-        private readonly int value;
-
-        public int Value
+        public Number(int value) : base(value)
         {
-            get { return value; }
-        }
-
-        public IExpression<int> Evaluate(IEnvironment environment)
-        {
-            return this;
-        }
-
-        public Number(int value)
-        {
-            this.value = value;
         }
     }
 }
