@@ -1,7 +1,6 @@
 ﻿namespace Simple
 {
-    public abstract class PrimitiveExpression<T>: IExpression<T>
-        where T: struct
+    public class PrimitiveExpression<T>: IExpression<T>
     {
         private readonly T value;
 
@@ -15,7 +14,7 @@
             return this;
         }
 
-        protected PrimitiveExpression(T value)
+        public PrimitiveExpression(T value)
         {
             this.value = value;
         }

@@ -1,6 +1,8 @@
-﻿namespace Simple
+﻿using System.Collections.Generic;
+
+namespace Simple
 {
-    public interface IEnvironment
+    public interface IEnvironment: IDictionary<string, object>
     {
     }
 }
