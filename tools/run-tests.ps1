@@ -1,0 +1,1 @@
+..\src\c#\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe ..\src\c#\Simple.Tests\bin\Debug\Simple.Tests.dll
