@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add.cs" />
     <Compile Include="PrimitiveExpression.cs" />
     <Compile Include="IEnvironment.cs" />
     <Compile Include="IExpression.cs" />
