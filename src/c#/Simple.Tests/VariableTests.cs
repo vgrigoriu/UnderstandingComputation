@@ -1,12 +1,11 @@
 ﻿using Moq;
-using NUnit.Framework;
+using Xunit;
 
 namespace Simple.Tests
 {
-    [TestFixture]
     public class VariableTests
     {
-        [Test]
+        [Fact]
         public void VariableGetsValueFromEnvironment()
         {
             var enviroment = new Mock<IEnvironment>();
@@ -18,7 +17,7 @@ namespace Simple.Tests
 
             var result = sut.Evaluate(enviroment.Object);
 
-            Assert.That(result, Is.SameAs(number));
+            Assert.Same(number, result);
         }
     }
 }

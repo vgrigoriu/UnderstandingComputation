@@ -1,26 +1,25 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Simple.Tests
 {
-    [TestFixture]
     public class BooleanTests
     {
-        [Test]
+        [Fact]
         public void BooleanEvaluatesToSelf()
         {
             var sut = new Boolean(false);
             var result = sut.Evaluate(null);
 
-            Assert.That(result, Is.SameAs(sut));
+            Assert.Same(sut, result);
         }
 
-        [Test]
+        [Fact]
         public void BooleanValueIsTheOnePassedInConstructor()
         {
             var value = true;
             var sut = new Boolean(value);
 
-            Assert.That(sut.Value, Is.EqualTo(value));
+            Assert.Equal(value, sut.Value);
         }
     }
 }

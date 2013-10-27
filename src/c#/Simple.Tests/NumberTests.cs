@@ -1,35 +1,33 @@
-﻿using NUnit.Framework;
-using Ploeh.AutoFixture;
+﻿using Ploeh.AutoFixture;
+using Xunit;
 
 namespace Simple.Tests
 {
-    [TestFixture]
     public class NumberTests
     {
         private Fixture fixture;
 
-        [SetUp]
-        public void CreateFixture()
+        public NumberTests()
         {
             fixture = new Fixture();
         }
 
-        [Test]
+        [Fact]
         public void NumberEvaluatesToSelf()
         {
             var sut = fixture.Create<Number>();
             var result = sut.Evaluate(null);
 
-            Assert.That(result, Is.SameAs(sut));
+            Assert.Same(sut, result);
         }
 
-        [Test]
+        [Fact]
         public void NumberValueIsTheOnePassedInConstructor()
         {
             var value = fixture.Create<int>();
             var sut = new Number(value);
 
-            Assert.That(sut.Value, Is.EqualTo(value));
+            Assert.Equal(value, sut.Value);
         }
     }
 }

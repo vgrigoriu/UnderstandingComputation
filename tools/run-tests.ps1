@@ -1,1 +1,1 @@
-..\src\c#\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe ..\src\c#\Simple.Tests\bin\Debug\Simple.Tests.dll
+..\src\c#\packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe ..\src\c#\Simple.Tests\bin\Debug\Simple.Tests.dll
