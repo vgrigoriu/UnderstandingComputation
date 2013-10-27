@@ -17,7 +17,7 @@ namespace Simple.Tests
         [Test]
         public void NumberEvaluatesToSelf()
         {
-            var sut = new Number(0);
+            var sut = fixture.Create<Number>();
             var result = sut.Evaluate(null);
 
             Assert.That(result, Is.SameAs(sut));
