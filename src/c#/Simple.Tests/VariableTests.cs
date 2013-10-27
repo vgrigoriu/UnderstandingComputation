@@ -1,5 +1,7 @@
 ﻿using Moq;
+using Ploeh.AutoFixture.Xunit;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Simple.Tests
 {
@@ -18,6 +20,14 @@ namespace Simple.Tests
             var result = sut.Evaluate(enviroment.Object);
 
             Assert.Same(number, result);
+        }
+
+        [Theory, AutoData]
+        public void CanGetVariableName(string variableName)
+        {
+            var sut = new Variable<string>(variableName);
+
+            Assert.Equal(variableName, sut.Name);
         }
     }
 }
