@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Ploeh.AutoFixture;
 
 namespace Simple.Tests
 {
     [TestFixture]
     public class NumberTests
     {
+        private Fixture fixture;
+
+        [SetUp]
+        public void CreateFixture()
+        {
+            fixture = new Fixture();
+        }
+
         [Test]
         public void NumberEvaluatesToSelf()
         {
@@ -23,7 +26,7 @@ namespace Simple.Tests
         [Test]
         public void NumberValueIsTheOnePassedInConstructor()
         {
-            var value = 7;
+            var value = fixture.Create<int>();
             var sut = new Number(value);
 
             Assert.That(sut.Value, Is.EqualTo(value));
