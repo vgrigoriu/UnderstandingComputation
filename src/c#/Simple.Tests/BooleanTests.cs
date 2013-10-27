@@ -1,22 +1,22 @@
-﻿using Xunit;
+﻿using Ploeh.AutoFixture.Xunit;
+using Xunit;
+using Xunit.Extensions;
 
 namespace Simple.Tests
 {
     public class BooleanTests
     {
-        [Fact]
-        public void BooleanEvaluatesToSelf()
+        [Theory, AutoData]
+        public void BooleanEvaluatesToSelf(Boolean boolean)
         {
-            var sut = new Boolean(false);
-            var result = sut.Evaluate(null);
+            var result = boolean.Evaluate(null);
 
-            Assert.Same(sut, result);
+            Assert.Same(boolean, result);
         }
 
-        [Fact]
-        public void BooleanValueIsTheOnePassedInConstructor()
+        [Theory, AutoData]
+        public void BooleanValueIsTheOnePassedInConstructor(bool value)
         {
-            var value = true;
             var sut = new Boolean(value);
 
             Assert.Equal(value, sut.Value);

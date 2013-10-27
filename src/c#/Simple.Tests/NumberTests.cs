@@ -1,30 +1,23 @@
 ﻿using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.Xunit;
 using Xunit;
+using Xunit.Extensions;
 
 namespace Simple.Tests
 {
     public class NumberTests
     {
-        private Fixture fixture;
-
-        public NumberTests()
+        [Theory, AutoData]
+        public void NumberEvaluatesToSelf(Number number)
         {
-            fixture = new Fixture();
+            var result = number.Evaluate(null);
+
+            Assert.Same(number, result);
         }
 
-        [Fact]
-        public void NumberEvaluatesToSelf()
+        [Theory, AutoData]
+        public void NumberValueIsTheOnePassedInConstructor(int value)
         {
-            var sut = fixture.Create<Number>();
-            var result = sut.Evaluate(null);
-
-            Assert.Same(sut, result);
-        }
-
-        [Fact]
-        public void NumberValueIsTheOnePassedInConstructor()
-        {
-            var value = fixture.Create<int>();
             var sut = new Number(value);
 
             Assert.Equal(value, sut.Value);
