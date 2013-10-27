@@ -11,7 +11,7 @@
 
         public IExpression<T> Evaluate(IEnvironment environment)
         {
-            return (IExpression<T>)environment[name];
+            return environment.GetValue<T>(name);
         }
 
         public Variable(string name)

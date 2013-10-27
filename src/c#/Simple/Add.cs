@@ -2,14 +2,15 @@
 {
     public class Add: IExpression<int>
     {
-        private readonly Number firstOperand;
-        private readonly Number secondOperand;
+        private readonly IExpression<int> firstOperand;
+        private readonly IExpression<int> secondOperand;
 
-        public Add(Number firstOperand, Number secondOperand)
+        public Add(IExpression<int> firstOperand, IExpression<int> secondOperand)
         {
             this.firstOperand = firstOperand;
             this.secondOperand = secondOperand;
         }
+
         public int Value
         {
             get { throw new System.NotImplementedException(); }
@@ -17,7 +18,9 @@
 
         public IExpression<int> Evaluate(IEnvironment environment)
         {
-            return new Number(firstOperand.Value + secondOperand.Value);
+            var firstOperandValue = firstOperand.Evaluate(environment);
+            var secondOperandValue = secondOperand.Evaluate(environment);
+            return new Number(firstOperandValue.Value + secondOperandValue.Value);
         }
     }
 }

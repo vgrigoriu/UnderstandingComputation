@@ -2,7 +2,8 @@
 
 namespace Simple
 {
-    public interface IEnvironment: IDictionary<string, object>
+    public interface IEnvironment
     {
+        IExpression<T> GetValue<T>(string variableName);
     }
 }

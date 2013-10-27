@@ -13,7 +13,7 @@ namespace Simple.Tests
             var enviroment = new Mock<IEnvironment>();
             var variableName = "count";
             var number = new Number(6);
-            enviroment.SetupGet(env => env[variableName]).Returns(number);
+            enviroment.Setup(env => env.GetValue<int>(variableName)).Returns(number);
 
             var sut = new Variable<int>(variableName);
 
