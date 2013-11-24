@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Simple
+﻿namespace Simple
 {
     public interface IEnvironment
     {

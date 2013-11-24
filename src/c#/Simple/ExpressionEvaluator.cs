@@ -4,7 +4,13 @@ namespace Simple
 {
     public class ExpressionEvaluator<T>: IExpressionVisitor<T>
     {
+        private readonly IEnvironment environment;
         private T value;
+
+        public ExpressionEvaluator(IEnvironment environment)
+        {
+            this.environment = environment;
+        }
 
         public IExpressionVisitor<T> Visit(PrimitiveExpression<T> primitiveExpression)
         {
@@ -28,7 +34,8 @@ namespace Simple
 
         public IExpressionVisitor<T> Visit(Variable<T> variable)
         {
-            throw new NotImplementedException();
+            var expression = environment.GetValue<T>(variable.Name);
+            return expression.Accept(this);
         }
 
         public T Value
