@@ -1,10 +1,10 @@
 ﻿namespace Simple
 {
-    public interface IExpressionVisitor
+    public interface IExpressionVisitor<T>
     {
-        IExpressionVisitor Visit<T>(PrimitiveExpression<T> primitiveExpression) where T : struct;
+        IExpressionVisitor<T> Visit(PrimitiveExpression<T> primitiveExpression);
 
-        IExpressionVisitor Visit<T>(BinaryExpression<T> binaryExpression);
-        IExpressionVisitor Visit<T>(Variable<T> variable);
+        IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression);
+        IExpressionVisitor<T> Visit(Variable<T> variable);
     }
 }

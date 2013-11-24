@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Simple
 {
-    public class ExpressionStringifier : IExpressionVisitor
+    public class ExpressionStringifier<T> : IExpressionVisitor<T>
     {
         private readonly StringBuilder output = new StringBuilder();
 
@@ -18,13 +18,13 @@ namespace Simple
             }
         }
 
-        public IExpressionVisitor Visit<T>(PrimitiveExpression<T> primitiveExpression) where T : struct
+        public IExpressionVisitor<T> Visit(PrimitiveExpression<T> primitiveExpression)
         {
             output.AppendFormat(CultureInfo.InvariantCulture, "{0}", primitiveExpression.Value);
             return this;
         }
 
-        public IExpressionVisitor Visit<T>(BinaryExpression<T> binaryExpression)
+        public IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression)
         {
             binaryExpression.FirstOperand.Accept(this);
             output.AppendFormat(" {0} ", binaryExpression.Operand);
@@ -33,7 +33,7 @@ namespace Simple
             return this;
         }
 
-        public IExpressionVisitor Visit<T>(Variable<T> variable)
+        public IExpressionVisitor<T> Visit(Variable<T> variable)
         {
             output.Append(variable.Name);
 

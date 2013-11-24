@@ -16,7 +16,7 @@ namespace Simple
             return environment.GetValue<T>(name);
         }
 
-        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
 

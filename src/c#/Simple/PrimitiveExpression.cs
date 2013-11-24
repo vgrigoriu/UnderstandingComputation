@@ -3,7 +3,6 @@
 namespace Simple
 {
     public abstract class PrimitiveExpression<T>: IExpression<T>
-        where T: struct
     {
         private readonly T value;
 
@@ -17,7 +16,7 @@ namespace Simple
             return this;
         }
 
-        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
 

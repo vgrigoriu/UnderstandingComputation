@@ -31,7 +31,7 @@ namespace Simple
         public abstract IExpression<T> Evaluate(IEnvironment environment);
         public abstract string Operand { get; }
 
-        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
 
