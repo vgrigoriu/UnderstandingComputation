@@ -46,5 +46,23 @@ namespace Simple.Tests
 
             Assert.Equal(number.Value, sut.Value);
         }
+
+        [Fact]
+        public void CanEvaluateAdditionOfVariableAndNumber()
+        {
+            var variable = new Variable<int>("i");
+            var variableValue = new Number(75);
+            var otherNumber = new Number(6);
+            var addition = new Add(variable, otherNumber);
+
+            var enviroment = new Mock<IEnvironment>();
+            enviroment.Setup(env => env.GetValue<int>("i")).Returns(variableValue);
+
+            var sut = new ExpressionEvaluator<int>(enviroment.Object);
+
+            addition.Accept(sut);
+
+            Assert.Equal(81, sut.Value);
+        }
     }
 }
