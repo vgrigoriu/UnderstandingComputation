@@ -14,5 +14,16 @@ namespace Simple.Tests
 
             Assert.Equal("«18»", sut.Output);
         }
+
+        [Fact]
+        public void CanStringifyABoolean()
+        {
+            var boolean = new Boolean(true);
+            var sut = new ExpressionStringifier();
+
+            boolean.Accept(sut);
+
+            Assert.Equal("«True»", sut.Output);
+        }
     }
 }
