@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System;
+
+namespace Simple
 {
     public class Add: IExpression<int>
     {
@@ -16,6 +18,16 @@
             get { throw new System.NotImplementedException(); }
         }
 
+        public IExpression<int> FirstOperand
+        {
+            get { return firstOperand; }
+        }
+
+        public IExpression<int> SecondOperand
+        {
+            get { return secondOperand; }
+        }
+
         public IExpression<int> Evaluate(IEnvironment environment)
         {
             var firstOperandValue = firstOperand.Evaluate(environment);
@@ -25,7 +37,9 @@
 
         public IExpressionVisitor Accept(IExpressionVisitor visitor)
         {
-            throw new System.NotImplementedException();
+            if (visitor == null) throw new ArgumentNullException("visitor");
+
+            return visitor.Accept(this);
         }
     }
 }

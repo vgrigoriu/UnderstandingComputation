@@ -25,5 +25,16 @@ namespace Simple.Tests
 
             Assert.Equal("«True»", sut.Output);
         }
+
+        [Fact]
+        public void CanStringifyAnAddExpression()
+        {
+            var add = new Add(new Number(12), new Number(101));
+            var sut = new ExpressionStringifier();
+
+            add.Accept(sut);
+
+            Assert.Equal("«12 + 101»", sut.Output);
+        }
     }
 }

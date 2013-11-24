@@ -23,5 +23,14 @@ namespace Simple
             output.AppendFormat(CultureInfo.InvariantCulture, "{0}", primitiveExpression.Value);
             return this;
         }
+
+        public IExpressionVisitor Accept(Add add)
+        {
+            add.FirstOperand.Accept(this);
+            output.Append(" + ");
+            add.SecondOperand.Accept(this);
+
+            return this;
+        }
     }
 }
