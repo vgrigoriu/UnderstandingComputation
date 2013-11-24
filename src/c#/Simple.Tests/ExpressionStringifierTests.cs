@@ -36,5 +36,16 @@ namespace Simple.Tests
 
             Assert.Equal("«12 + 101»", sut.Output);
         }
+
+        [Fact]
+        public void CanStringifyAVariable()
+        {
+            var variable = new Variable<int>("weight");
+            var sut = new ExpressionStringifier();
+
+            variable.Accept(sut);
+
+            Assert.Equal("«weight»", sut.Output);
+        }
     }
 }

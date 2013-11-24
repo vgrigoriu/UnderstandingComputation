@@ -32,5 +32,12 @@ namespace Simple
 
             return this;
         }
+
+        public IExpressionVisitor Visit<T>(Variable<T> variable)
+        {
+            output.Append(variable.Name);
+
+            return this;
+        }
     }
 }

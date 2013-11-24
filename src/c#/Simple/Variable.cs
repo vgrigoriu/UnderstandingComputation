@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System;
+
+namespace Simple
 {
     public class Variable<T>: IExpression<T>
     {
@@ -16,7 +18,9 @@
 
         public IExpressionVisitor Accept(IExpressionVisitor visitor)
         {
-            throw new System.NotImplementedException();
+            if (visitor == null) throw new ArgumentNullException("visitor");
+
+            return visitor.Visit(this);
         }
 
         public Variable(string name)
