@@ -1,45 +1,22 @@
-﻿using System;
-
-namespace Simple
+﻿namespace Simple
 {
-    public class Add: IExpression<int>
+    public class Add: BinaryExpression<int>
     {
-        private readonly IExpression<int> firstOperand;
-        private readonly IExpression<int> secondOperand;
-
         public Add(IExpression<int> firstOperand, IExpression<int> secondOperand)
+            : base(firstOperand, secondOperand)
         {
-            this.firstOperand = firstOperand;
-            this.secondOperand = secondOperand;
         }
 
-        public int Value
+        public override IExpression<int> Evaluate(IEnvironment environment)
         {
-            get { throw new System.NotImplementedException(); }
-        }
-
-        public IExpression<int> FirstOperand
-        {
-            get { return firstOperand; }
-        }
-
-        public IExpression<int> SecondOperand
-        {
-            get { return secondOperand; }
-        }
-
-        public IExpression<int> Evaluate(IEnvironment environment)
-        {
-            var firstOperandValue = firstOperand.Evaluate(environment);
-            var secondOperandValue = secondOperand.Evaluate(environment);
+            var firstOperandValue = FirstOperand.Evaluate(environment);
+            var secondOperandValue = SecondOperand.Evaluate(environment);
             return new Number(firstOperandValue.Value + secondOperandValue.Value);
         }
 
-        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        public override string Operand
         {
-            if (visitor == null) throw new ArgumentNullException("visitor");
-
-            return visitor.Visit(this);
+            get { return "+"; }
         }
     }
 }

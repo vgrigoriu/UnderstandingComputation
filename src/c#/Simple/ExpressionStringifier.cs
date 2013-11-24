@@ -24,11 +24,11 @@ namespace Simple
             return this;
         }
 
-        public IExpressionVisitor Visit(Add add)
+        public IExpressionVisitor Visit<T>(BinaryExpression<T> binaryExpression)
         {
-            add.FirstOperand.Accept(this);
-            output.Append(" + ");
-            add.SecondOperand.Accept(this);
+            binaryExpression.FirstOperand.Accept(this);
+            output.AppendFormat(" {0} ", binaryExpression.Operand);
+            binaryExpression.SecondOperand.Accept(this);
 
             return this;
         }

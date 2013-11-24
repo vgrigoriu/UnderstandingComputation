@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Add.cs" />
+    <Compile Include="BinaryExpression.cs" />
     <Compile Include="ExpressionStringifier.cs" />
     <Compile Include="IExpressionVisitor.cs" />
     <Compile Include="PrimitiveExpression.cs" />
