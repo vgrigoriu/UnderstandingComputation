@@ -29,7 +29,9 @@ namespace Simple
         }
 
         public abstract IExpression<T> Evaluate(IEnvironment environment);
-        public abstract string Operand { get; }
+        public abstract string OperandName { get; }
+
+        public abstract Func<T, T, T> Operand { get; }
 
         public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
         {

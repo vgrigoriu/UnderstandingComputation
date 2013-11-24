@@ -27,7 +27,7 @@ namespace Simple
         public IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression)
         {
             binaryExpression.FirstOperand.Accept(this);
-            output.AppendFormat(" {0} ", binaryExpression.Operand);
+            output.AppendFormat(" {0} ", binaryExpression.OperandName);
             binaryExpression.SecondOperand.Accept(this);
 
             return this;

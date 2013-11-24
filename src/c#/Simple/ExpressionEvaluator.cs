@@ -15,7 +15,15 @@ namespace Simple
 
         public IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression)
         {
-            throw new NotImplementedException();
+            binaryExpression.FirstOperand.Accept(this);
+            var firstValue = value;
+
+            binaryExpression.SecondOperand.Accept(this);
+            var secondValue = value;
+
+            value = binaryExpression.Operand(firstValue, secondValue);
+
+            return this;
         }
 
         public IExpressionVisitor<T> Visit(Variable<T> variable)

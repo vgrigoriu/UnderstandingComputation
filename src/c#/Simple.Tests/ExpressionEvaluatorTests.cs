@@ -14,5 +14,18 @@ namespace Simple.Tests
 
             Assert.Equal(-123, sut.Value);
         }
+
+        [Fact]
+        public void CanEvaluateAdditionOfTwoNumbers()
+        {
+            var firstNumber = new Number(11);
+            var secondNumber = new Number(99);
+            var addition = new Add(firstNumber, secondNumber);
+            var sut = new ExpressionEvaluator<int>();
+
+            addition.Accept(sut);
+
+            Assert.Equal(110, sut.Value);
+        }
     }
 }

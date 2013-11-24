@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System;
+
+namespace Simple
 {
     public class Add: BinaryExpression<int>
     {
@@ -14,9 +16,14 @@
             return new Number(firstOperandValue.Value + secondOperandValue.Value);
         }
 
-        public override string Operand
+        public override string OperandName
         {
             get { return "+"; }
+        }
+
+        public override Func<int, int, int> Operand
+        {
+            get { return (op1, op2) => op1 + op2; }
         }
     }
 }
