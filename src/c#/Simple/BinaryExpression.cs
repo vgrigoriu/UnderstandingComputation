@@ -28,7 +28,6 @@ namespace Simple
             this.secondOperand = secondOperand;
         }
 
-        public abstract IExpression<T> Evaluate(IEnvironment environment);
         public abstract string OperandName { get; }
 
         public abstract Func<T, T, T> Operand { get; }

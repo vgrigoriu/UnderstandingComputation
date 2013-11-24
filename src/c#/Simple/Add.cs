@@ -9,13 +9,6 @@ namespace Simple
         {
         }
 
-        public override IExpression<int> Evaluate(IEnvironment environment)
-        {
-            var firstOperandValue = FirstOperand.Evaluate(environment);
-            var secondOperandValue = SecondOperand.Evaluate(environment);
-            return new Number(firstOperandValue.Value + secondOperandValue.Value);
-        }
-
         public override string OperandName
         {
             get { return "+"; }

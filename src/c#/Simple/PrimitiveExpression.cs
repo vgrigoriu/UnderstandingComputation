@@ -11,11 +11,6 @@ namespace Simple
             get { return value; }
         }
 
-        public IExpression<T> Evaluate(IEnvironment environment)
-        {
-            return this;
-        }
-
         public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
