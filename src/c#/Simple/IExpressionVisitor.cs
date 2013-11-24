@@ -2,5 +2,6 @@
 {
     public interface IExpressionVisitor
     {
+        IExpressionVisitor Accept<T>(PrimitiveExpression<T> primitiveExpression) where T : struct;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Simple
+﻿using System;
+
+namespace Simple
 {
     public abstract class PrimitiveExpression<T>: IExpression<T>
         where T: struct
@@ -17,7 +19,9 @@
 
         public IExpressionVisitor Accept(IExpressionVisitor visitor)
         {
-            throw new System.NotImplementedException();
+            if (visitor == null) throw new ArgumentNullException("visitor");
+
+            return visitor.Accept(this);
         }
 
         protected PrimitiveExpression(T value)
