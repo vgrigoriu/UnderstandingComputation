@@ -12,14 +12,12 @@ namespace Simple
             this.environment = environment;
         }
 
-        public IExpressionVisitor<T> Visit(PrimitiveExpression<T> primitiveExpression)
+        public void Visit(PrimitiveExpression<T> primitiveExpression)
         {
             value = primitiveExpression.Value;
-
-            return this;
         }
 
-        public IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression)
+        public void Visit(BinaryExpression<T> binaryExpression)
         {
             binaryExpression.FirstOperand.Accept(this);
             var firstValue = value;
@@ -28,14 +26,12 @@ namespace Simple
             var secondValue = value;
 
             value = binaryExpression.Operand(firstValue, secondValue);
-
-            return this;
         }
 
-        public IExpressionVisitor<T> Visit(Variable<T> variable)
+        public void Visit(Variable<T> variable)
         {
             var expression = environment.GetValue<T>(variable.Name);
-            return expression.Accept(this);
+            expression.Accept(this);
         }
 
         public T Value

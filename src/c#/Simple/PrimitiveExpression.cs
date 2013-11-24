@@ -11,11 +11,11 @@ namespace Simple
             get { return value; }
         }
 
-        public IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor)
+        public void Accept(IExpressionVisitor<T> visitor)
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
 
-            return visitor.Visit(this);
+            visitor.Visit(this);
         }
 
         protected PrimitiveExpression(T value)

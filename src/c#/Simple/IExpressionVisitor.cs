@@ -2,9 +2,9 @@
 {
     public interface IExpressionVisitor<T>
     {
-        IExpressionVisitor<T> Visit(PrimitiveExpression<T> primitiveExpression);
+        void Visit(PrimitiveExpression<T> primitiveExpression);
 
-        IExpressionVisitor<T> Visit(BinaryExpression<T> binaryExpression);
-        IExpressionVisitor<T> Visit(Variable<T> variable);
+        void Visit(BinaryExpression<T> binaryExpression);
+        void Visit(Variable<T> variable);
     }
 }

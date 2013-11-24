@@ -2,6 +2,6 @@
 {
     public interface IExpression<T>
     {
-        IExpressionVisitor<T> Accept(IExpressionVisitor<T> visitor);
+        void Accept(IExpressionVisitor<T> visitor);
     }
 }
