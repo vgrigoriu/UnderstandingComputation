@@ -18,13 +18,13 @@ namespace Simple
             }
         }
 
-        public IExpressionVisitor Accept<T>(PrimitiveExpression<T> primitiveExpression) where T : struct
+        public IExpressionVisitor Visit<T>(PrimitiveExpression<T> primitiveExpression) where T : struct
         {
             output.AppendFormat(CultureInfo.InvariantCulture, "{0}", primitiveExpression.Value);
             return this;
         }
 
-        public IExpressionVisitor Accept(Add add)
+        public IExpressionVisitor Visit(Add add)
         {
             add.FirstOperand.Accept(this);
             output.Append(" + ");

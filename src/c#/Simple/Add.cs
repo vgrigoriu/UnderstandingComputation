@@ -39,7 +39,7 @@ namespace Simple
         {
             if (visitor == null) throw new ArgumentNullException("visitor");
 
-            return visitor.Accept(this);
+            return visitor.Visit(this);
         }
     }
 }
