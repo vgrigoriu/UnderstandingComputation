@@ -2,7 +2,7 @@
 {
     public class Variable<T>: IExpression<T>
     {
-        private string name;
+        private readonly string name;
 
         public T Value
         {
@@ -12,6 +12,11 @@
         public IExpression<T> Evaluate(IEnvironment environment)
         {
             return environment.GetValue<T>(name);
+        }
+
+        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Variable(string name)

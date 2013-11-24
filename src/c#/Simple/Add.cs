@@ -22,5 +22,10 @@
             var secondOperandValue = secondOperand.Evaluate(environment);
             return new Number(firstOperandValue.Value + secondOperandValue.Value);
         }
+
+        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Add.cs" />
+    <Compile Include="IExpressionVisitor.cs" />
     <Compile Include="PrimitiveExpression.cs" />
     <Compile Include="IEnvironment.cs" />
     <Compile Include="IExpression.cs" />

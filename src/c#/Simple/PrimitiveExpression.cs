@@ -15,6 +15,11 @@
             return this;
         }
 
+        public IExpressionVisitor Accept(IExpressionVisitor visitor)
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected PrimitiveExpression(T value)
         {
             this.value = value;

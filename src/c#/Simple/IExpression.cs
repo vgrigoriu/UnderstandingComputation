@@ -4,5 +4,7 @@
     {
         T Value { get; }
         IExpression<T> Evaluate(IEnvironment environment);
+
+        IExpressionVisitor Accept(IExpressionVisitor visitor);
     }
 }
