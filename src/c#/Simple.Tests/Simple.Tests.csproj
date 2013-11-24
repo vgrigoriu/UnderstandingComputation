@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="AddTests.cs" />
     <Compile Include="BooleanTests.cs" />
+    <Compile Include="ExpressionEvaluatorTests.cs" />
     <Compile Include="ExpressionStringifierTests.cs" />
     <Compile Include="NumberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
