@@ -27,7 +27,7 @@ namespace Simple.Tests
         }
 
         [Fact]
-        public void CanStringifyAnAddExpression()
+        public void CanStringifyAnAddExpressionOfTwoNumbers()
         {
             var add = new Add(new Number(12), new Number(101));
             var sut = new ExpressionStringifier();
@@ -35,6 +35,17 @@ namespace Simple.Tests
             add.Accept(sut);
 
             Assert.Equal("«12 + 101»", sut.Output);
+        }
+
+        [Fact]
+        public void CanStringifyAnAddExpressionOfOneVariableAndOneNumber()
+        {
+            var add = new Add(new Variable<int>("i"), new Number(3));
+            var sut = new ExpressionStringifier();
+
+            add.Accept(sut);
+
+            Assert.Equal("«i + 3»", sut.Output);
         }
 
         [Fact]
